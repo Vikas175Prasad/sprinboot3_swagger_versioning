@@ -1,0 +1,62 @@
+openapi: 3.1.0
+info:
+  title: User API
+  version: 1.0.0
+  description: Basic user API
+paths:
+  /users:
+    get:
+      tags:
+       - Users
+      summary: Get all users
+      responses:
+        '200':
+          description: 'List of users'
+  /users/add_user:
+    post:
+      tags:
+        - Create User
+      summary: Create new user
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/User'
+      responses:
+        '200':
+          description: 'Create new user'
+  /users/update_user/{userId}:
+    put:
+      tags:
+        - Update User
+      summary: Update user
+      parameters:
+        - name: userId
+          in: path
+          required: true
+          description: ID of the user to update
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/User'
+      responses:
+        '200':
+          description: 'Create new user'
+
+components:
+  schemas:
+    User:
+      type: object
+      required:
+       - id
+       - name
+      properties:
+        id:
+          type: string
+        name:
+          type: string

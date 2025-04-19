@@ -1,0 +1,14 @@
+openapi: 3.1.0
+info:
+  title: User API
+  version: 2.0.0
+  description: Basic user API
+paths:
+  /users/v2:
+    get:
+      tags:
+       - Users
+      summary: Get all users
+      responses:
+        '200':
+          description: 'List of users'
